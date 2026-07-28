@@ -72,7 +72,7 @@ Bad:
 
 ## Mixed working tree
 
-관심사가 섞여 있거나 「단계별/비슷한 것끼리 커밋」이면 `grouped-git-commit`을 먼저 따른다.
+관심사가 섞여 있거나 「전체 커밋」「전부 커밋」「단계별/비슷한 것끼리 커밋」이면 `grouped-git-commit`을 먼저 따른다. 「전체」는 빠짐없이 올리라는 뜻이지 한 커밋으로 몰아넣으라는 뜻이 아니다.
 
 ## Drafting checklist
 

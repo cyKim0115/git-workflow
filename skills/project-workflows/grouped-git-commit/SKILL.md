@@ -2,8 +2,9 @@
 name: grouped-git-commit
 description: >-
   Groups related working-tree changes into coherent git commits (one or more).
-  Use when the user asks for 단계별 커밋, 비슷한 변경끼리 커밋, group/split commits by concern,
-  or to commit mixed unstaged changes without dumping everything into one commit.
+  Use when the user asks for 전체 커밋, 전부 커밋, 단계별 커밋, 비슷한 변경끼리 커밋,
+  group/split commits by concern, or to commit mixed unstaged changes without
+  dumping everything into one commit.
 ---
 
 # Grouped Git Commit
@@ -16,19 +17,34 @@ description: >-
 
 ## When to use
 
+- 「전체 커밋」「전부 커밋」— 빠짐없이 올리되 **한 덩어리로 몰아넣지 않음**
 - 「단계별 커밋」「비슷한 것끼리 커밋」「나눠서 커밋」
 - 워킹트리에 서로 다른 관심사가 섞여 있을 때
 - 「올릴 만한 것만」처럼 무관한 로컬 변경을 걸러야 할 때
 
+## 「전체」의미
+
+「전체」는 **남은 관련 변경을 빠짐없이** 올리라는 뜻이지, **A·B·C 기능을 한 커밋에** 올리라는 뜻이 아니다.
+
+A, B, C가 구현되어 있으면:
+
+1. A에 해당하는 파일만 스테이징 → `A … 구현` 메시지로 커밋
+2. B, C도 같은 방식으로 반복
+
+「A,B,C 기능 구현」 한 방 커밋은 금지한다.
+
 ## Workflow
 
 1. `git status` / `git diff --stat` / `git log -N --oneline`를 병렬로 확인한다.
-2. 변경을 **관심사 클러스터**로 나눈다.
+2. 변경을 **관심사 클러스터**(구현 단위)로 나눈다.
 3. 클러스터가 하나면 **단일 커밋**. 둘 이상이면 **의존 순**으로 각각 스테이징·커밋한다.
-4. 각 커밋 메시지는 `korean-git-commit` 형식 `{영역} - {구체적 변경 내용}`.
-5. 전부 끝난 뒤 `git status`로 남은 파일(의도적 제외분)을 짧게 보고한다.
+4. 각 단위는 해당 파일만 경로로 스테이징한다 (`git add path1 path2` — 인터랙티브 `add -p`/`add -i` 금지).
+5. 각 커밋 메시지는 `korean-git-commit` 형식 `{영역} - {구체적 변경 내용}`.
+6. 전부 끝난 뒤 `git status`로 남은 파일(의도적 제외분)을 짧게 보고한다.
 
 이미 부분 스테이징돼 있으면, 첫 클러스터 전에 `git restore --staged`로 정리한 뒤 다시 묶는다.
+
+한 파일이 여러 단위에 걸치면 주된 단위에 넣고 메시지에 부수 변경을 짧게 밝힌다.
 
 ## How to cluster
 
@@ -69,6 +85,7 @@ description: >-
 
 ## Anti-patterns
 
+- 「전체」요청인데 A·B·C를 한 커밋에 몰아넣기
 - 한 관심사인데 억지로 여러 커밋으로 쪼개기
 - 무관한 파일을 단일 커밋에 몰아넣기
 - 메시지에 여러 영역을 `및`으로 나열해 혼합 커밋 숨기기
