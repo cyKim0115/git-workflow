@@ -11,18 +11,31 @@
 | Rule | `cursor/rules/korean-git-commit.mdc` | 한글 커밋 메시지 형식 |
 | Rule | `cursor/rules/git-commit-on-finish.mdc` | 작업 완료 커밋·`+커푸` |
 | Skill | `skills/project-workflows/korean-git-commit/` | 커밋/푸시 절차 |
-| Skill | `skills/project-workflows/grouped-git-commit/` | 관심사별 묶음 커밋 |
+| Skill | `skills/project-workflows/grouped-git-commit/` | 관심사별 묶음 커밋 · 「전체」단위 분할 |
 
 ## 설치
 
 ```powershell
-# GitHub 원격(권장)
-git submodule add git@github.com:<you>/git-workflow.git .cursor/git-workflow
+# HTTPS (키 없이 / 다른 사람용 — 권장 기본 예시)
+git submodule add https://github.com/cyKim0115/git-workflow.git .cursor/git-workflow
+
+# SSH (키가 설정된 경우)
+git submodule add git@github.com:cyKim0115/git-workflow.git .cursor/git-workflow
 
 # 로컬 절대 경로
 git -c protocol.file.allow=always submodule add --force C:/Users/cykim/repo/git-workflow .cursor/git-workflow
 
 powershell -File .cursor/git-workflow/scripts/sync-to-project.ps1
+```
+
+또는 설치 스크립트:
+
+```powershell
+# HTTPS
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl https://github.com/cyKim0115/git-workflow.git
+
+# SSH
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl git@github.com:cyKim0115/git-workflow.git
 ```
 
 ## 업데이트
