@@ -18,10 +18,10 @@ your-project/
 
 ```powershell
 # HTTPS
-powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl https://github.com/cyKim0115/git-workflow.git
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl https://github.com/<owner>/git-workflow.git
 
 # SSH
-powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl git@github.com:cyKim0115/git-workflow.git
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl git@github.com:<owner>/git-workflow.git
 ```
 
 또는 README의 `git submodule add` 예시 참고.

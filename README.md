@@ -17,13 +17,13 @@
 
 ```powershell
 # HTTPS (키 없이 / 다른 사람용 — 권장 기본 예시)
-git submodule add https://github.com/cyKim0115/git-workflow.git .cursor/git-workflow
+git submodule add https://github.com/<owner>/git-workflow.git .cursor/git-workflow
 
 # SSH (키가 설정된 경우)
-git submodule add git@github.com:cyKim0115/git-workflow.git .cursor/git-workflow
+git submodule add git@github.com:<owner>/git-workflow.git .cursor/git-workflow
 
 # 로컬 절대 경로
-git -c protocol.file.allow=always submodule add --force C:/Users/cykim/repo/git-workflow .cursor/git-workflow
+git -c protocol.file.allow=always submodule add --force /absolute/path/to/git-workflow .cursor/git-workflow
 
 powershell -File .cursor/git-workflow/scripts/sync-to-project.ps1
 ```
@@ -32,10 +32,10 @@ powershell -File .cursor/git-workflow/scripts/sync-to-project.ps1
 
 ```powershell
 # HTTPS
-powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl https://github.com/cyKim0115/git-workflow.git
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl https://github.com/<owner>/git-workflow.git
 
 # SSH
-powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl git@github.com:cyKim0115/git-workflow.git
+powershell -File ..\git-workflow\scripts\install-as-submodule.ps1 -PackUrl git@github.com:<owner>/git-workflow.git
 ```
 
 ## 업데이트
